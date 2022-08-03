@@ -40,7 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     PhotoGalery(),
-    PhotoViewScreen(), // change to new screen photo for you
+    Text(
+      'Index 1: For You',    // change to new screen photo for you
+    ),
     AlbumsScreen(),
     Text(
       'Index 3: Search',
@@ -102,11 +104,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      /*floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: _addPhoto,
         tooltip: 'add photo',
         child: const Icon(Icons.add),
-      ),*/
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

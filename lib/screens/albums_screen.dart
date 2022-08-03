@@ -26,22 +26,35 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Albums',
-                  style: TextStyle( // change to best version of text style in main !!!
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
                   ),
-                ),
-                Text(
-                  'All',
-                  style: TextStyle( // change to best version of text style in main !!!
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                  onPressed: () {},
+                  child: Text(
+                    'Albums',
+                    style: TextStyle( // change to best version of text style in main !!!
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
+                ), // for albums widget
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'All',
+                    style: TextStyle( // change to best version of text style in main !!!
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ), // for albums widget
               ],
             ),
             SizedBox(
@@ -57,38 +70,54 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   return Column(
                     children: [
                       PhotoView(width: _width, height: _heigth),
-                      Text(
-                        'Text',
-                        style: TextStyle( // change to best version of text style in main !!!
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Text(
+                          'Text',
+                          style: TextStyle( // change to best version of text style in main !!!
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ],
                   );
                 },
               ),
-            ),
+            ), // for albums widget
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Favorites',
-                  style: TextStyle( // change to best version of text style in main !!!
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
                   ),
-                ),
-                Text(
-                  'All',
-                  style: TextStyle( // change to best version of text style in main !!!
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                  onPressed: () {},
+                  child: Text(
+                    'Favorites',
+                    style: TextStyle( // change to best version of text style in main !!!
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
+                ), // for Favorites widget
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'All',
+                    style: TextStyle( // change to best version of text style in main !!!
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ), // for Favorites widget
               ],
             ),
             SizedBox(
@@ -104,38 +133,54 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   return Column(
                     children: [
                       PhotoView(width: _width, height: _heigth),
-                      Text(
-                        'Text',
-                        style: TextStyle( // change to best version of text style in main !!!
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                      Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Text(
+                          'Text',
+                          style: TextStyle( // change to best version of text style in main !!!
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ],
                   );
                 },
               ),
-            ),
+            ), // for Favorites widget
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Recent',
-                  style: TextStyle( // change to best version of text style in main !!!
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
                   ),
-                ),
-                Text(
-                  'All',
-                  style: TextStyle( // change to best version of text style in main !!!
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                  onPressed: () {},
+                  child: Text(
+                    'Recent',
+                    style: TextStyle( // change to best version of text style in main !!!
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
+                ), // for Recent widget
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'All',
+                    style: TextStyle( // change to best version of text style in main !!!
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ), // for Recent widget
               ],
             ),
             SizedBox(
@@ -151,19 +196,22 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   return Column(
                     children: [
                       PhotoView(width: _width, height: _heigth),
-                      Text(
-                        'Text',
-                        style: TextStyle( // change to best version of text style in main !!!
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                      Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Text(
+                          'Text',
+                          style: TextStyle( // change to best version of text style in main !!!
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ],
                   );
                 },
               ),
-            ),
+            ), // for Recent widget
           ],
         ),
     );
