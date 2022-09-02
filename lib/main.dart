@@ -1,6 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:photo_hooks/database/dbhelper.dart';
+import 'package:photo_hooks/model/encoding_and_decoding_for_picture.dart';
 import 'package:photo_hooks/screens/albums_screen.dart';
 import 'package:photo_hooks/screens/galery_screen.dart';
+import 'package:photo_hooks/model/picture.dart';
 import 'package:photo_hooks/screens/photo_view_screen.dart';
 
 void main() {
@@ -34,9 +41,66 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   int _selectedIndex = 0;
   bool isVisible = false;
+  File? imageFile;
+
+  // in top how bylo do sql lite
+  late Future<File> pictureFile;
+  late Image picture;
+  late DBHelper dbHelper;
+  late List<Picture> pictures;
+
+  @override
+  void initState() {
+    super.initState();
+    pictures = [];
+    dbHelper = DBHelper();
+    refreshImages();
+  }
+
+  refreshImages() {
+    dbHelper.getPictures().then((imgs) {
+      setState(() {
+        pictures.clear();
+        pictures.addAll(imgs);
+      });
+    });
+  }
+
+  pickImageFromGallery() {
+    ImagePicker().pickImage(source: ImageSource.gallery).then((imgFile) async {
+      String imgString = EncodingAndDecodingForPicture.base64String(await imgFile!.readAsBytes());
+      Picture picture1 = Picture(0, imgString, id: null, pictureName: '');
+      dbHelper.save(picture1);
+      refreshImages();
+    });
+  }
+
+
+
+  // in bottom how bylo do sql lite
+
+  /// !!!! reshyt kuda zasunut gridView chtob posmotret rezultat !!!
+  ///  можно передать как параметр pictures[] в photоview заместь файла с изображением
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  /*Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+
+      final imageTemporary = File(image.path);
+      setState(() => this.imageFile = imageTemporary);
+    } on PlatformException catch (e) {
+      print('Error! Failed to pick Image : ( $e )');
+    }
+  }*/
 
   static const List<Widget> _widgetOptions = <Widget>[
     PhotoGalery(),
@@ -49,15 +113,42 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  void _addPhoto() {
-    setState(() {
-      // add photo logic
+  Future<void> _showChoiceDialog(BuildContext context) {
+    return showDialog(context: context, builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Center(child: Text('Make a Choice...')),
+        content: SingleChildScrollView(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              ElevatedButton(
+                  onPressed: () => pickImageFromGallery(),
+                  child: Icon(Icons.photo_album_outlined),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(CircleBorder()),
+                    padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                    backgroundColor: MaterialStateProperty.all(Colors.cyan),
+                    overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
+                      if (states.contains(MaterialState.pressed)) return Colors.red;
+                    }),
+                  ),
+              ),
+              ElevatedButton(
+                  onPressed: () => pickImageFromGallery(),
+                  child: Icon(Icons.camera_alt_outlined),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(CircleBorder()),
+                    padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                    backgroundColor: MaterialStateProperty.all(Colors.cyan),
+                    overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
+                      if (states.contains(MaterialState.pressed)) return Colors.red;
+                    }),
+                  ),
+              ),
+            ],
+          ),
+        ),
+      );
     });
   }
 
@@ -105,7 +196,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addPhoto,
+        onPressed: () {
+          _showChoiceDialog(context);
+        },
         tooltip: 'add photo',
         child: const Icon(Icons.add),
       ),
