@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:photo_hooks/database/dbhelper.dart';
-import 'package:photo_hooks/model/encoding_and_decoding_for_picture.dart';
-import 'package:photo_hooks/screens/albums_screen.dart';
-import 'package:photo_hooks/screens/galery_screen.dart';
-import 'package:photo_hooks/model/picture.dart';
-import 'package:photo_hooks/screens/photo_view_screen.dart';
+import '../database/dbhelper.dart';
+import '../helpers/encoding_and_decoding_for_picture.dart';
+import '../screens/albums_screen.dart';
+import '../screens/galery_screen.dart';
+import '../model/picture.dart';
+import '../screens/photo_view_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -81,8 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // in bottom how bylo do sql lite
 
-  /// !!!! reshyt kuda zasunut gridView chtob posmotret rezultat !!!
-  ///  можно передать как параметр pictures[] в photоview заместь файла с изображением
+  ///       !!!! reshyt kuda zasunut gridView chtob posmotret rezultat !!!!
+  /// можно передать как параметр pictures[] в photоview заместь файла с изображением
 
   void _onItemTapped(int index) {
     setState(() {

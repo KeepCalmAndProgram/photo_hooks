@@ -118,7 +118,7 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
