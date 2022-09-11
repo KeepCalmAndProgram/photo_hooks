@@ -16,7 +16,6 @@ class _PhotoGaleryState extends State<PhotoGalery> {
 
   @override
   Widget build(BuildContext context) {
-
     _width = MediaQuery.of(context).size.width / 5;
     _heigth = MediaQuery.of(context).size.height / 10;
 
@@ -44,6 +43,3 @@ class _PhotoGaleryState extends State<PhotoGalery> {
     );
   }
 }
-
-
-

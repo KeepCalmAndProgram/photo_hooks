@@ -8,7 +8,12 @@ class PhotoView extends StatefulWidget {
   final double width;
   File? image;
 
-  PhotoView({Key? key, required this.width, required this.height, required this.image}) : super(key: key);
+  PhotoView({
+    Key? key,
+    required this.width,
+    required this.height,
+    this.image,
+  }) : super(key: key);
 
   @override
   State<PhotoView> createState() => _PhotoViewState();
@@ -31,21 +36,14 @@ class _PhotoViewState extends State<PhotoView> {
             child: SizedBox(
               height: widget.height,
               width: widget.width,
-              child: widget.image != null ? Image.file(
-                widget.image!,
-                fit: BoxFit.cover,
-              ) : FlutterLogo(size: 50),
+              child: widget.image != null
+                  ? Image.file(
+                      widget.image!,
+                      fit: BoxFit.cover,
+                    )
+                  : FlutterLogo(size: 50),
             ),
           ),
-          /*child: Container(
-            height: widget.height,
-            width: widget.width,
-            decoration: BoxDecoration(
-              image: widget.image != null ? Image.file(widget.image!),
-              borderRadius: BorderRadius.circular(10),
-              //boxShadow: [BoxShadow(color: Colors.yellow, spreadRadius: 3),],
-            ),
-          ),*/
         ),
       ],
     );

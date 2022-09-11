@@ -8,7 +8,6 @@ class CustomHook extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container();
   }
 }
