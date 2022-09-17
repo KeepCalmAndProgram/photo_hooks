@@ -8,9 +8,18 @@ class TodoStatus extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        TextButton(onPressed: () {}, child: const Text('All')),
-        TextButton(onPressed: () {}, child: const Text('Completed')),
-        TextButton(onPressed: () {}, child: const Text('Uncompleted')),
+        TextButton(
+          onPressed: () {},
+          child: const Text('All'),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const Text('Completed'),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const Text('Uncompleted'),
+        ),
       ],
     );
   }

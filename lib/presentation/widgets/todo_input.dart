@@ -28,7 +28,7 @@ class _TodoInputState extends State<TodoInput> {
                 controller: _titleController,
                 decoration: const InputDecoration(labelText: 'Title'),
               )),
-          TextButton(onPressed: _submitdata, child: const Text('Add Todo'))
+          TextButton(onPressed: _submitdata, child: const Text('Add Todo')),
         ],
       ),
     );

@@ -1,22 +1,13 @@
-class Picture {
-  late int? id;
-  late String? pictureName;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-  Picture({
-    required this.id,
-    required this.pictureName,
-  });
+part 'picture.freezed.dart';
+part 'picture.g.dart';
 
-  Map<String, dynamic> toMap() {
-    var map = <String, dynamic>{
-      'id': id,
-      'pictureName': pictureName,
-    };
-    return map;
-  }
-
-  Picture.fromMap(Map<String, dynamic> map) {
-    id = map['id'];
-    pictureName = map['pictureName'];
-  }
+@freezed
+class Picture with _$Picture {
+  const factory Picture({
+    required int id,
+    required String pictureName,
+  }) = _Picture;
 }

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
-import '../screens/photo_view_screen.dart';
+import 'package:photo_hooks/presentation/screens/photo_view_screen.dart';
 
 class PhotoView extends StatefulWidget {
   final double height;

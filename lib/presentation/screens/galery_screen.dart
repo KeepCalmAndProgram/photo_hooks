@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import '../widgets/photo_view_widget.dart';
+import 'package:photo_hooks/presentation/widgets/photo_view_widget.dart';
 
 class PhotoGalery extends StatefulWidget {
   const PhotoGalery({Key? key}) : super(key: key);

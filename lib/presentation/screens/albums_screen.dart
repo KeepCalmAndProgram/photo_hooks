@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/photo_view_widget.dart';
+import 'package:photo_hooks/presentation/widgets/photo_view_widget.dart';
 
 class AlbumsScreen extends StatefulWidget {
   const AlbumsScreen({Key? key}) : super(key: key);
@@ -63,9 +63,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(12),
               itemCount: 5,
-              separatorBuilder: (context, index) {
-                return const SizedBox(width: 12);
-              },
+              separatorBuilder: (context, index) => const SizedBox(width: 12),
               itemBuilder: (context, index) {
                 return Column(
                   children: [
@@ -129,9 +127,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(12),
               itemCount: 5,
-              separatorBuilder: (context, index) {
-                return const SizedBox(width: 12);
-              },
+              separatorBuilder: (context, index) => const SizedBox(width: 12),
               itemBuilder: (context, index) {
                 return Column(
                   children: [
@@ -195,9 +191,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(12),
               itemCount: 5,
-              separatorBuilder: (context, index) {
-                return const SizedBox(width: 12);
-              },
+              separatorBuilder: (context, index) => const SizedBox(width: 12),
               itemBuilder: (context, index) {
                 return Column(
                   children: [

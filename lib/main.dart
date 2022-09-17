@@ -1,19 +1,13 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:photo_hooks/configuration/app_colors.dart';
 
-import './presentation/screens/albums_screen.dart';
-import './presentation/screens/galery_screen.dart';
-import '../model/picture.dart';
-import '../model/todo.dart';
+import 'package:photo_hooks/presentation/screens/albums_screen.dart';
+import 'package:photo_hooks/presentation/screens/galery_screen.dart';
+import 'package:photo_hooks/model/picture.dart';
+import 'package:photo_hooks/model/todo.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import './presentation/screens/photo_view_screen.dart';
-
-/*void main() {
-  runApp(const MyApp());
-}*/
+import 'package:photo_hooks/presentation/screens/photo_view_screen.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -52,38 +46,15 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isVisible = false;
   File? imageFile;
 
-  // in top how bylo do sql lite
   late Future<File> pictureFile;
   late Image picture;
-  //late DBHelper dbHelper;
   late List<Picture> pictures;
 
   @override
   void initState() {
     super.initState();
     pictures = [];
-    //dbHelper = DBHelper();
-    //refreshImages();
   }
-
-  /*refreshImages() {
-    dbHelper.getPictures().then((imgs) {
-      setState(() {
-        pictures.clear();
-        pictures.addAll(imgs);
-      });
-    });
-  }
-
-  pickImageFromGallery() {
-    ImagePicker().pickImage(source: ImageSource.gallery).then((imgFile) async {
-      String imgString = EncodingAndDecodingForPicture.base64String(
-          await imgFile!.readAsBytes());
-      Picture picture1 = Picture(0, imgString, id: null, pictureName: '');
-      dbHelper.save(picture1);
-      refreshImages();
-    });
-  }*/
 
   void _onItemTapped(int index) {
     setState(() {
@@ -104,48 +75,89 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _showChoiceDialog(BuildContext context) {
     return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Center(child: Text('Make a Choice...')),
-            content: SingleChildScrollView(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () => {}, //pickImageFromGallery(),
-                    child: Icon(Icons.photo_album_outlined),
-                    style: ElevatedButton.styleFrom(
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(10),
-                      primary: Colors.cyan,
-                    ),
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Center(
+            child: Text('Make a Choice...'),
+          ),
+          content: SingleChildScrollView(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () {
+                    //pickImageFromGallery(),
+                  },
+                  child: Icon(Icons.photo_album_outlined),
+                  style: ElevatedButton.styleFrom(
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(10),
+                    primary: Colors.cyan,
                   ),
-                  ElevatedButton(
-                    // change to better version in top
-                    onPressed: () => {}, //pickImageFromGallery(),
-                    child: Icon(Icons.camera_alt_outlined),
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(CircleBorder()),
-                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-                      backgroundColor: MaterialStateProperty.all(Colors.cyan),
-                      overlayColor:
-                          MaterialStateProperty.resolveWith<Color?>((states) {
+                ),
+                ElevatedButton(
+                  // change to better version in top
+                  onPressed: () {
+                    //pickImageFromGallery(),
+                  },
+                  child: Icon(Icons.camera_alt_outlined),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(CircleBorder()),
+                    padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                    backgroundColor: MaterialStateProperty.all(Colors.cyan),
+                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                      (states) {
                         if (states.contains(MaterialState.pressed))
                           return Colors.red;
-                      }),
+                      },
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      title: 'Photos',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: AppColors.appBarColor,
+        scaffoldBackgroundColor: AppColors.backgroundColor,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: TextTheme(
+          bodyText1: TextStyle(
+            color: Colors.black,
+            fontSize: 15,
+
+            /// find best size for text !
+          ),
+          bodyText2: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+
+            /// find best size for text !
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: TextStyle(color: AppColors.secondaryColor),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primaryColor),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.secondaryColor),
+          ),
+        ),
+      ),
+      home: PhotoViewScreen(),
+    );
+    /*return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.menu),
         title: Text(widget.title),
@@ -232,6 +244,6 @@ class _MyHomePageState extends State<MyHomePage> {
         selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    );*/
   }
 }

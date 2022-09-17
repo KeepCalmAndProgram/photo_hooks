@@ -13,7 +13,11 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Photo View')),
+      appBar: AppBar(
+        title: const Text(
+          'Photo View',
+        ),
+      ),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -22,7 +26,10 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
             fit: BoxFit.cover,
           ),
           BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            filter: ImageFilter.blur(
+              sigmaX: 3.0,
+              sigmaY: 3.0,
+            ),
             child: new Container(
               color: Colors.black.withOpacity(0.2),
             ),
@@ -36,18 +43,24 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                 children: <Widget>[
                   Container(
                     //alignment: Alignment.center,
-                    child: Container(width: 400.0, height: 400.0),
+                    child: Container(
+                      width: 400.0,
+                      height: 400.0,
+                    ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       image: const DecorationImage(
-                          image: NetworkImage(
-                              'https://pics.filmaffinity.com/Mulan-807158695-large.jpg'),
-                          fit: BoxFit.cover),
+                        image: NetworkImage(
+                          'https://pics.filmaffinity.com/Mulan-807158695-large.jpg',
+                        ),
+                        fit: BoxFit.cover,
+                      ),
                       boxShadow: const [
                         BoxShadow(
-                            color: Colors.black,
-                            blurRadius: 20.0,
-                            offset: Offset(0.0, 10.0)),
+                          color: Colors.black,
+                          blurRadius: 20.0,
+                          offset: Offset(0.0, 10.0),
+                        ),
                       ],
                     ),
                   ),
