@@ -1,20 +1,17 @@
-class Picture{
+import 'package:hive/hive.dart';
 
-  late int? id;
-  late String? pictureName;
+part 'picture.g.dart';
 
-  Picture(int i, String imgString, { required this.id, required this.pictureName});
+@HiveType(typeId: 0)
+class Picture {
+  @HiveField(0)
+  final String id;
 
-  Map<String, dynamic> toMap(){
-    var map = <String, dynamic> {
-      'id' : id,
-      'pictureName' : pictureName,
-    };
-    return map;
-  }
+  @HiveField(1)
+  final String image;
 
-  Picture.fromMap(Map<String, dynamic>map) {
-    id = map['id'];
-    pictureName = map['pictureName'];
-  }
+  Picture({
+    required this.id,
+    required this.image,
+  });
 }

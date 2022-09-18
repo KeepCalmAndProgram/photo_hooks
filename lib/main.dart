@@ -1,16 +1,16 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:photo_hooks/database/dbhelper.dart';
-import 'package:photo_hooks/model/encoding_and_decoding_for_picture.dart';
-import 'package:photo_hooks/screens/albums_screen.dart';
-import 'package:photo_hooks/screens/galery_screen.dart';
-import 'package:photo_hooks/model/picture.dart';
-import 'package:photo_hooks/screens/photo_view_screen.dart';
+import 'package:photo_hooks/configuration/app_colors.dart';
 
-void main() {
+import 'package:photo_hooks/presentation/screens/albums_screen.dart';
+import 'package:photo_hooks/presentation/screens/photo_gallery_screen.dart';
+import 'package:photo_hooks/model/picture.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(PictureAdapter());
+  await Hive.openBox('todos');
   runApp(const MyApp());
 }
 
@@ -21,10 +21,35 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Photos',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: AppColors.appBarColor,
+        scaffoldBackgroundColor: AppColors.backgroundColor,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: TextTheme(
+          bodyText1: TextStyle(
+            color: Colors.black,
+            fontSize: 15,
 
-        primarySwatch: Colors.blue,
+            /// find best size for text !
+          ),
+          bodyText2: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+
+            /// find best size for text !
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: TextStyle(color: AppColors.secondaryColor),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primaryColor),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.secondaryColor),
+          ),
+        ),
       ),
       home: const MyHomePage(title: 'Galery'),
     );
@@ -45,44 +70,15 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isVisible = false;
   File? imageFile;
 
-  // in top how bylo do sql lite
   late Future<File> pictureFile;
   late Image picture;
-  late DBHelper dbHelper;
   late List<Picture> pictures;
 
   @override
   void initState() {
     super.initState();
     pictures = [];
-    dbHelper = DBHelper();
-    refreshImages();
   }
-
-  refreshImages() {
-    dbHelper.getPictures().then((imgs) {
-      setState(() {
-        pictures.clear();
-        pictures.addAll(imgs);
-      });
-    });
-  }
-
-  pickImageFromGallery() {
-    ImagePicker().pickImage(source: ImageSource.gallery).then((imgFile) async {
-      String imgString = EncodingAndDecodingForPicture.base64String(await imgFile!.readAsBytes());
-      Picture picture1 = Picture(0, imgString, id: null, pictureName: '');
-      dbHelper.save(picture1);
-      refreshImages();
-    });
-  }
-
-
-
-  // in bottom how bylo do sql lite
-
-  /// !!!! reshyt kuda zasunut gridView chtob posmotret rezultat !!!
-  ///  можно передать как параметр pictures[] в photоview заместь файла с изображением
 
   void _onItemTapped(int index) {
     setState(() {
@@ -90,22 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  /*Future pickImage(ImageSource source) async {
-    try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image == null) return;
-
-      final imageTemporary = File(image.path);
-      setState(() => this.imageFile = imageTemporary);
-    } on PlatformException catch (e) {
-      print('Error! Failed to pick Image : ( $e )');
-    }
-  }*/
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    PhotoGalery(),
+  static const _widgetOptions = <Widget>[
+    PhotoGalleryScreen(),
     Text(
-      'Index 1: For You',    // change to new screen photo for you
+      'Index 1: For You', // change to new screen photo for you
     ),
     AlbumsScreen(),
     Text(
@@ -114,42 +98,53 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   Future<void> _showChoiceDialog(BuildContext context) {
-    return showDialog(context: context, builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Center(child: Text('Make a Choice...')),
-        content: SingleChildScrollView(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              ElevatedButton(
-                  onPressed: () => pickImageFromGallery(),
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Center(
+            child: Text('Make a Choice...'),
+          ),
+          content: SingleChildScrollView(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    //pickImageFromGallery(),
+                  },
                   child: Icon(Icons.photo_album_outlined),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(CircleBorder()),
-                    padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-                    backgroundColor: MaterialStateProperty.all(Colors.cyan),
-                    overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
-                      if (states.contains(MaterialState.pressed)) return Colors.red;
-                    }),
+                  style: ElevatedButton.styleFrom(
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(10),
+                    primary: Colors.cyan,
                   ),
-              ),
-              ElevatedButton(
-                  onPressed: () => pickImageFromGallery(),
+                ),
+                ElevatedButton(
+                  // change to better version in top
+                  onPressed: () {
+                    //pickImageFromGallery(),
+                  },
                   child: Icon(Icons.camera_alt_outlined),
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(CircleBorder()),
                     padding: MaterialStateProperty.all(EdgeInsets.all(10)),
                     backgroundColor: MaterialStateProperty.all(Colors.cyan),
-                    overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
-                      if (states.contains(MaterialState.pressed)) return Colors.red;
-                    }),
+                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                      (states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return Colors.red;
+                        }
+                      },
+                    ),
                   ),
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 
   @override
@@ -187,8 +182,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.more_vert),
+            onPressed: () {},
+            icon: Icon(Icons.more_vert),
           ),
         ],
       ),
@@ -205,22 +200,34 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.perm_media_outlined, color: Colors.grey,),
-              label: 'Media Library',
-              backgroundColor: Colors.white,
+            icon: Icon(
+              Icons.perm_media_outlined,
+              color: Colors.grey,
+            ),
+            label: 'Media Library',
+            backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.volunteer_activism_outlined, color: Colors.grey,),
+            icon: Icon(
+              Icons.volunteer_activism_outlined,
+              color: Colors.grey,
+            ),
             label: 'For You',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.photo_album_outlined, color: Colors.grey,),
+            icon: Icon(
+              Icons.photo_album_outlined,
+              color: Colors.grey,
+            ),
             label: 'Albums',
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search_outlined, color: Colors.grey,),
+            icon: Icon(
+              Icons.search_outlined,
+              color: Colors.grey,
+            ),
             label: 'Search',
             backgroundColor: Colors.white,
           ),
@@ -228,7 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
