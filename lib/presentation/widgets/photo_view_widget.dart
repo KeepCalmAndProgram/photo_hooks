@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:photo_hooks/configuration/app_colors.dart';
 
 import 'package:photo_hooks/presentation/screens/photo_view_screen.dart';
 
@@ -31,18 +32,19 @@ class _PhotoViewState extends State<PhotoView> {
               MaterialPageRoute(builder: (context) => const PhotoViewScreen()),
             );
           },
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: SizedBox(
-              height: widget.height,
-              width: widget.width,
-              child: widget.image != null
-                  ? Image.file(
-                      widget.image!,
-                      fit: BoxFit.cover,
-                    )
-                  : FlutterLogo(size: 50),
+          child: Container(
+            height: widget.height,
+            width: widget.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: AppColors.appBarColor,
             ),
+            child: widget.image != null
+                ? Image.file(
+                    widget.image!,
+                    fit: BoxFit.cover,
+                  )
+                : FlutterLogo(size: 50),
           ),
         ),
       ],

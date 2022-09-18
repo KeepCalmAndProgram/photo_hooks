@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class PhotoViewScreen extends StatefulWidget {
@@ -66,7 +65,6 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                   ),
                   Container(
                     margin: const EdgeInsets.all(25.0),
-                    //alignment: Alignment.center,
                     child: const Text(
                       '12 July 2022',
                       style: TextStyle(

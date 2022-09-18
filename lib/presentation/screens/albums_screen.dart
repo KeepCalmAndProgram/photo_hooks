@@ -11,12 +11,12 @@ class AlbumsScreen extends StatefulWidget {
 
 class _AlbumsScreenState extends State<AlbumsScreen> {
   late double _width;
-  late double _heigth;
+  late double _height;
 
   @override
   Widget build(BuildContext context) {
     _width = MediaQuery.of(context).size.width / 3;
-    _heigth = MediaQuery.of(context).size.height / 6;
+    _height = MediaQuery.of(context).size.height / 6;
 
     return SingleChildScrollView(
       child: Column(
@@ -67,7 +67,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    PhotoView(width: _width, height: _heigth),
+                    PhotoView(width: _width, height: _height),
                     Padding(
                       padding: const EdgeInsets.all(5),
                       child: Text(
@@ -131,7 +131,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    PhotoView(width: _width, height: _heigth),
+                    PhotoView(width: _width, height: _height),
                     Padding(
                       padding: const EdgeInsets.all(5),
                       child: Text(
@@ -195,7 +195,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    PhotoView(width: _width, height: _heigth),
+                    PhotoView(width: _width, height: _height),
                     Padding(
                       padding: const EdgeInsets.all(5),
                       child: Text(

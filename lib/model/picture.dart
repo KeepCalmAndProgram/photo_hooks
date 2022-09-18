@@ -1,13 +1,17 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
 
-part 'picture.freezed.dart';
 part 'picture.g.dart';
 
-@freezed
-class Picture with _$Picture {
-  const factory Picture({
-    required int id,
-    required String pictureName,
-  }) = _Picture;
+@HiveType(typeId: 0)
+class Picture {
+  @HiveField(0)
+  final String id;
+
+  @HiveField(1)
+  final String image;
+
+  Picture({
+    required this.id,
+    required this.image,
+  });
 }
