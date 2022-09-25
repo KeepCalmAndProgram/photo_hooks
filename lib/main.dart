@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:photo_hooks/configuration/app_colors.dart';
 
 import 'package:photo_hooks/presentation/screens/albums_screen.dart';
+import 'package:photo_hooks/presentation/screens/for_you_screen.dart';
 import 'package:photo_hooks/presentation/screens/photo_gallery_screen.dart';
+import 'package:photo_hooks/presentation/screens/search_screen.dart';
 import 'package:photo_hooks/model/picture.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -88,13 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static const _widgetOptions = <Widget>[
     PhotoGalleryScreen(),
-    Text(
-      'Index 1: For You', // change to new screen photo for you
-    ),
+    ForYouScreen(),
     AlbumsScreen(),
-    Text(
-      'Index 3: Search',
-    ),
+    SearchScreen(),
   ];
 
   Future<void> _showChoiceDialog(BuildContext context) {
@@ -187,9 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _showChoiceDialog(context);
