@@ -25,55 +25,58 @@ class _SearchScreenState extends State<SearchScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Search',
-                  style: TextStyle(
-                    // change to best version of text style in main !!!
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Search',
+                    style: TextStyle(
+                      // change to best version of text style in main !!!
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-          Row(
-            children: [
-              GestureDetector(
-                child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                          AppColors.secondaryColor,
-                          AppColors.primaryColor,
-                        ]),
-                        borderRadius: BorderRadius.circular(40)),
-                    padding: EdgeInsets.all(12),
-                    child: Image.asset("assets/images/search.png")),
-              ),
-              Expanded(
-                child: TextField(
-                  style: TextStyle(color: AppColors.primaryColor),
-                  decoration: InputDecoration(
-                      hintText: AppText.seachName,
-                      hintStyle: TextStyle(color: AppColors.appBarColor),
-                      border: InputBorder.none),
-                ),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: TextField(
+              decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
+                  fillColor: Colors.white,
+                  filled: true,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: const BorderSide(width: 0.8)),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide: BorderSide(
+                          width: 0.8, color: Theme.of(context).primaryColor)),
+                  hintText: "Photo, places...",
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    size: 30,
+                  ),
+                  suffixIcon: IconButton(
+                      icon: const Icon(Icons.clear), onPressed: () {})),
+            ),
           ),
-          Container(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Places',
-              style: TextStyle(
-                // change to best version of text style in main !!!
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Places',
+                style: TextStyle(
+                  // change to best version of text style in main !!!
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),
@@ -92,15 +95,18 @@ class _SearchScreenState extends State<SearchScreen> {
               },
             ),
           ),
-          Container(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Sort by Data',
-              style: TextStyle(
-                // change to best version of text style in main !!!
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Sort by Data',
+                style: TextStyle(
+                  // change to best version of text style in main !!!
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),

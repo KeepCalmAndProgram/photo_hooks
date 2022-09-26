@@ -186,13 +186,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _showChoiceDialog(context);
-        },
-        tooltip: 'add photo',
-        child: const Icon(Icons.add),
-      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

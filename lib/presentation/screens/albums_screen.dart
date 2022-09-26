@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:photo_hooks/presentation/widgets/photo_view_widget.dart';
 
+import 'package:photo_hooks/configuration/app_colors.dart';
+
 class AlbumsScreen extends StatefulWidget {
   const AlbumsScreen({Key? key}) : super(key: key);
 
@@ -213,6 +215,77 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   );
                 },
               ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Media File Types',
+                  style: TextStyle(
+                    // change to best version of text style in main !!!
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.camera_alt_outlined,
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Video',
+                              style: TextStyle(
+                                // change to best version of text style in main !!!
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Row(
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  '15 >',
+                                  style: TextStyle(
+                                    // change to best version of text style in main !!!
+                                    fontSize: 15,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Divider(
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+              ],
             ), // for Recent widget
           ],
         ),
