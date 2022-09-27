@@ -65,14 +65,9 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                   ),
                   Container(
                     margin: const EdgeInsets.all(25.0),
-                    child: const Text(
+                    child: Text(
                       '12 July 2022',
-                      style: TextStyle(
-                        // change to best version of text style in main !!!
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
                   Row(

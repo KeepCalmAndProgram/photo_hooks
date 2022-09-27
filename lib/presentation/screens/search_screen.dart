@@ -31,12 +31,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Search',
-                    style: TextStyle(
-                      // change to best version of text style in main !!!
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),
               ),
@@ -71,12 +66,7 @@ class _SearchScreenState extends State<SearchScreen> {
               alignment: Alignment.centerLeft,
               child: Text(
                 'Places',
-                style: TextStyle(
-                  // change to best version of text style in main !!!
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
           ),
@@ -101,12 +91,7 @@ class _SearchScreenState extends State<SearchScreen> {
               alignment: Alignment.centerLeft,
               child: Text(
                 'Sort by Data',
-                style: TextStyle(
-                  // change to best version of text style in main !!!
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
           ),

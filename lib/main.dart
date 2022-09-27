@@ -29,18 +29,16 @@ class MyApp extends StatelessWidget {
         primaryColor: AppColors.appBarColor,
         scaffoldBackgroundColor: AppColors.backgroundColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           bodyText1: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
             color: Colors.black,
-            fontSize: 15,
-
-            /// find best size for text !
           ),
           bodyText2: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
             color: Colors.black,
-            fontSize: 20,
-
-            /// find best size for text !
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(

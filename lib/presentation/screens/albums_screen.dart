@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:photo_hooks/presentation/widgets/photo_view_widget.dart';
 
 import 'package:photo_hooks/configuration/app_colors.dart';
+import 'package:photo_hooks/presentation/widgets/text_button_widget.dart';
+import 'package:photo_hooks/presentation/widgets/icon_text_button_widget.dart';
 
 class AlbumsScreen extends StatefulWidget {
   const AlbumsScreen({Key? key}) : super(key: key);
@@ -28,36 +30,11 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'Albums',
-                    style: TextStyle(
-                      // change to best version of text style in main !!!
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ), // for albums widget
-                TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'All',
-                    style: TextStyle(
-                      // change to best version of text style in main !!!
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ), // for albums widget
+                Text(
+                  'Albums',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                TextButtonWidget(text: 'All'),
               ],
             ),
             SizedBox(
@@ -75,53 +52,22 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                         padding: const EdgeInsets.all(5),
                         child: Text(
                           'Text',
-                          style: TextStyle(
-                            // change to best version of text style in main !!!
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
+                          style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),
                     ],
                   );
                 },
               ),
-            ), // for albums widget
-
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'Favorites',
-                    style: TextStyle(
-                      // change to best version of text style in main !!!
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ), // for Favorites widget
-                TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'All',
-                    style: TextStyle(
-                      // change to best version of text style in main !!!
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ), // for Favorites widget
+                Text(
+                  'Favorites',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                TextButtonWidget(text: 'All'),
               ],
             ),
             SizedBox(
@@ -139,53 +85,22 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                         padding: const EdgeInsets.all(5),
                         child: Text(
                           'Text',
-                          style: TextStyle(
-                            // change to best version of text style in main !!!
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
+                          style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),
                     ],
                   );
                 },
               ),
-            ), // for Favorites widget
-
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'Recent',
-                    style: TextStyle(
-                      // change to best version of text style in main !!!
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ), // for Recent widget
-                TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'All',
-                    style: TextStyle(
-                      // change to best version of text style in main !!!
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ), // for Recent widget
+                Text(
+                  'Recent',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                TextButtonWidget(text: 'All'),
               ],
             ),
             SizedBox(
@@ -203,12 +118,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                         padding: const EdgeInsets.all(5),
                         child: Text(
                           'Text',
-                          style: TextStyle(
-                            // change to best version of text style in main !!!
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
+                          style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),
                     ],
@@ -222,66 +132,17 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Media File Types',
-                  style: TextStyle(
-                    // change to best version of text style in main !!!
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
             ),
             Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.camera_alt_outlined,
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Video',
-                              style: TextStyle(
-                                // change to best version of text style in main !!!
-                                fontSize: 15,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  '15 >',
-                                  style: TextStyle(
-                                    // change to best version of text style in main !!!
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Divider(
+                IconTextButton(
+                    text_left_side: 'Video',
+                    text_right_side: '17 >',
+                    icon: Icons.camera_alt_outlined),
+                const Divider(
                   thickness: 1,
                   color: Colors.black,
                 ),

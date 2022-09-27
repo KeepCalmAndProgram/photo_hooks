@@ -31,12 +31,7 @@ class _ForYouScreenState extends State<ForYouScreen> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'For You',
-                  style: TextStyle(
-                    // change to best version of text style in main !!!
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ),
             ),
@@ -51,12 +46,7 @@ class _ForYouScreenState extends State<ForYouScreen> {
                   padding: EdgeInsets.all(5.0),
                   child: Text(
                     'Memories',
-                    style: TextStyle(
-                      // change to best version of text style in main !!!
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ), // for Recent widget
                 TextButton(
@@ -68,12 +58,7 @@ class _ForYouScreenState extends State<ForYouScreen> {
                     padding: EdgeInsets.all(5.0),
                     child: Text(
                       'All',
-                      style: TextStyle(
-                        // change to best version of text style in main !!!
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
                 ), // for Recent widget
@@ -120,12 +105,7 @@ class _ForYouScreenState extends State<ForYouScreen> {
                 padding: EdgeInsets.all(5.0),
                 child: Text(
                   'Photo Selection',
-                  style: TextStyle(
-                    // change to best version of text style in main !!!
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ),
             ),
@@ -145,12 +125,7 @@ class _ForYouScreenState extends State<ForYouScreen> {
                         left: 10,
                         child: Text(
                           '01.09.2021',
-                          style: TextStyle(
-                            // change to best version of text style in main !!!
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
+                          style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),
                     ],
