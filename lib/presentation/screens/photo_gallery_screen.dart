@@ -47,9 +47,7 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //_showChoiceDialog(context);
-        },
+        onPressed: () {},
         tooltip: 'add photo',
         child: const Icon(Icons.add),
       ),

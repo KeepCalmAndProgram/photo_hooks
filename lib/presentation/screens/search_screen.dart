@@ -41,23 +41,28 @@ class _SearchScreenState extends State<SearchScreen> {
             padding: const EdgeInsets.all(5.0),
             child: TextField(
               decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: const BorderSide(width: 0.8)),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      borderSide: BorderSide(
-                          width: 0.8, color: Theme.of(context).primaryColor)),
-                  hintText: "Photo, places...",
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    size: 30,
-                  ),
-                  suffixIcon: IconButton(
-                      icon: const Icon(Icons.clear), onPressed: () {})),
+                contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
+                fillColor: Colors.white,
+                filled: true,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                  borderSide: const BorderSide(width: 0.8),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                  borderSide: BorderSide(
+                      width: 0.8, color: Theme.of(context).primaryColor),
+                ),
+                hintText: "Photo, places...",
+                prefixIcon: const Icon(
+                  Icons.search,
+                  size: 30,
+                ),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: () {},
+                ),
+              ),
             ),
           ),
           Padding(
@@ -80,9 +85,8 @@ class _SearchScreenState extends State<SearchScreen> {
               padding: const EdgeInsets.all(12),
               itemCount: 5,
               separatorBuilder: (context, index) => const SizedBox(width: 12),
-              itemBuilder: (context, index) {
-                return PhotoView(width: _width, height: _height);
-              },
+              itemBuilder: (context, index) =>
+                  PhotoView(width: _width, height: _height),
             ),
           ),
           Padding(
@@ -105,9 +109,8 @@ class _SearchScreenState extends State<SearchScreen> {
               padding: const EdgeInsets.all(12),
               itemCount: 5,
               separatorBuilder: (context, index) => const SizedBox(width: 12),
-              itemBuilder: (context, index) {
-                return PhotoView(width: _width, height: _height);
-              },
+              itemBuilder: (context, index) =>
+                  PhotoView(width: _width, height: _height),
             ),
           ),
         ],

@@ -34,7 +34,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   'Albums',
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                TextButtonWidget(text: 'All'),
+                TextButtonCustomise(text: 'All'),
               ],
             ),
             SizedBox(
@@ -47,7 +47,10 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      PhotoView(width: _width, height: _height),
+                      PhotoView(
+                        width: _width,
+                        height: _height,
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(5),
                         child: Text(
@@ -67,7 +70,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   'Favorites',
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                TextButtonWidget(text: 'All'),
+                TextButtonCustomise(text: 'All'),
               ],
             ),
             SizedBox(
@@ -80,7 +83,10 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      PhotoView(width: _width, height: _height),
+                      PhotoView(
+                        width: _width,
+                        height: _height,
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(5),
                         child: Text(
@@ -100,7 +106,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   'Recent',
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                TextButtonWidget(text: 'All'),
+                TextButtonCustomise(text: 'All'),
               ],
             ),
             SizedBox(
@@ -113,7 +119,10 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      PhotoView(width: _width, height: _height),
+                      PhotoView(
+                        width: _width,
+                        height: _height,
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(5),
                         child: Text(
@@ -137,17 +146,55 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
               ),
             ),
             Column(
-              children: [
+              children: const [
                 IconTextButton(
-                    text_left_side: 'Video',
-                    text_right_side: '17 >',
-                    icon: Icons.camera_alt_outlined),
-                const Divider(
+                  textLeftSide: 'Photo',
+                  textRightSide: '10 >',
+                  icon: Icons.photo_album_outlined,
+                ),
+                Divider(
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+                IconTextButton(
+                  textLeftSide: 'Video',
+                  textRightSide: '17 >',
+                  icon: Icons.video_call_outlined,
+                ),
+                Divider(
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+                IconTextButton(
+                  textLeftSide: 'Screenshots',
+                  textRightSide: '3 >',
+                  icon: Icons.screenshot_monitor_outlined,
+                ),
+                Divider(
                   thickness: 1,
                   color: Colors.black,
                 ),
               ],
-            ), // for Recent widget
+            ),
+            Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Other',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+            ),
+            IconTextButton(
+              textLeftSide: 'Recently Deleted',
+              textRightSide: '0 >',
+              icon: Icons.delete_outline,
+            ),
+            Divider(
+              thickness: 1,
+              color: Colors.black,
+            ),
           ],
         ),
       ),

@@ -77,18 +77,27 @@ class _ForYouScreenState extends State<ForYouScreen> {
                 itemBuilder: (context, index) {
                   return Stack(
                     children: [
-                      PhotoView(width: _width, height: _height),
+                      PhotoView(
+                        width: _width,
+                        height: _height,
+                      ),
                       Positioned(
-                        top: 10,
-                        right: 10,
+                        top: 8,
+                        right: 8,
                         child: Row(
                           children: [
                             IconButton(
-                              icon: Icon(Icons.share),
+                              icon: Icon(
+                                Icons.share,
+                                color: Colors.white54,
+                              ),
                               onPressed: () {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.heart_broken),
+                              icon: Icon(
+                                Icons.heart_broken,
+                                color: Colors.white54,
+                              ),
                               onPressed: () {},
                             ),
                           ],
@@ -119,7 +128,10 @@ class _ForYouScreenState extends State<ForYouScreen> {
                 itemBuilder: (context, index) {
                   return Stack(
                     children: [
-                      PhotoView(width: _width, height: _height),
+                      PhotoView(
+                        width: _width,
+                        height: _height,
+                      ),
                       Positioned(
                         bottom: 10,
                         left: 10,
