@@ -63,16 +63,16 @@ class ForYouMemories extends StatelessWidget {
                     child: Row(
                       children: [
                         IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.share,
-                            color: Colors.white54,
+                            color: Colors.white,
                           ),
                           onPressed: () {},
                         ),
                         IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.heart_broken,
-                            color: Colors.white54,
+                            color: Colors.white,
                           ),
                           onPressed: () {},
                         ),

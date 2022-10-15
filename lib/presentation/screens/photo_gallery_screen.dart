@@ -14,20 +14,23 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _width = MediaQuery.of(context).size.width / 5;
-    _height = MediaQuery.of(context).size.height / 10;
+    _width = MediaQuery.of(context).size.width / 4.3;
+    _height = MediaQuery.of(context).size.height / 8;
 
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
-            top: 10,
-            left: 10,
-          ),
+          padding: EdgeInsets.all(6),
           child: Wrap(
-            spacing: 17.0,
-            runSpacing: 19.0,
+            spacing: 5.0,
+            runSpacing: 5.0,
             children: <Widget>[
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
               PhotoView(width: _width, height: _height),
               PhotoView(width: _width, height: _height),
               PhotoView(width: _width, height: _height),

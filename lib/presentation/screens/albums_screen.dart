@@ -25,22 +25,30 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
     _height = MediaQuery.of(context).size.height / 6;
 
     return SingleChildScrollView(
-      child: Center(
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Albums',
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                TextButtonCustomise(
-                  text: 'All',
-                  onPressed: onPressed,
-                ),
-              ],
+            Padding(
+              padding: EdgeInsets.only(left: 5.0, right: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Albums',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  TextButtonCustomise(
+                    text: 'All',
+                    onPressed: onPressed,
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              thickness: 1,
+              color: Colors.black,
             ),
             SizedBox(
               height: 210,
@@ -68,18 +76,25 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                 },
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Favorites',
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                TextButtonCustomise(
-                  text: 'All',
-                  onPressed: onPressed,
-                ),
-              ],
+            Padding(
+              padding: EdgeInsets.only(left: 5.0, right: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Favorites',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  TextButtonCustomise(
+                    text: 'All',
+                    onPressed: onPressed,
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              thickness: 1,
+              color: Colors.black,
             ),
             SizedBox(
               height: 210,
@@ -107,18 +122,25 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                 },
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Recent',
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                TextButtonCustomise(
-                  text: 'All',
-                  onPressed: onPressed,
-                ),
-              ],
+            Padding(
+              padding: EdgeInsets.only(left: 5.0, right: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Recent',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  TextButtonCustomise(
+                    text: 'All',
+                    onPressed: onPressed,
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              thickness: 1,
+              color: Colors.black,
             ),
             SizedBox(
               height: 210,

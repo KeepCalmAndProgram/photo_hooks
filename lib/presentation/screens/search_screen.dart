@@ -31,7 +31,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Search',
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
               ),

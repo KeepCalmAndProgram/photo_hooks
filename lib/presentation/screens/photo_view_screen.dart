@@ -44,7 +44,7 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                     //alignment: Alignment.center,
                     child: Container(
                       width: 400.0,
-                      height: 400.0,
+                      height: 550.0,
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
@@ -67,11 +67,11 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                     margin: const EdgeInsets.all(25.0),
                     child: Text(
                       '12 July 2022',
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Ink(
                         decoration: const ShapeDecoration(

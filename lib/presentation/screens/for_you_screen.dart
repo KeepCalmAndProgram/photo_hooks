@@ -31,7 +31,7 @@ class _ForYouScreenState extends State<ForYouScreen> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'For You',
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.headline1,
                 ),
               ),
             ),
@@ -108,13 +108,17 @@ class _ForYouScreenState extends State<ForYouScreen> {
                 },
               ),
             ),
+            Divider(
+              thickness: 1,
+              color: Colors.black,
+            ),
             Container(
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.all(5.0),
                 child: Text(
                   'Photo Selection',
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
             ),
@@ -137,7 +141,7 @@ class _ForYouScreenState extends State<ForYouScreen> {
                         left: 10,
                         child: Text(
                           '01.09.2021',
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: Theme.of(context).textTheme.bodyText2,
                         ),
                       ),
                     ],

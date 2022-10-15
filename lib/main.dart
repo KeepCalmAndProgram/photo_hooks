@@ -19,7 +19,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,18 +29,23 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColors.backgroundColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: const TextTheme(
+          headline1: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
           bodyText1: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
           bodyText2: TextStyle(
-            fontSize: 30,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(color: AppColors.secondaryColor),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: AppColors.primaryColor),
