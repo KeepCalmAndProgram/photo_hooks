@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class TextButtonCustomise extends StatelessWidget {
   final String text;
+  final VoidCallback onPressed;
 
   const TextButtonCustomise({
     Key? key,
     required this.text,
+    required this.onPressed,
   }) : super(key: key);
 
   @override

@@ -17,6 +17,8 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
   late double _width;
   late double _height;
 
+  void onPressed() {}
+
   @override
   Widget build(BuildContext context) {
     _width = MediaQuery.of(context).size.width / 3;
@@ -34,7 +36,10 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   'Albums',
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                TextButtonCustomise(text: 'All'),
+                TextButtonCustomise(
+                  text: 'All',
+                  onPressed: onPressed,
+                ),
               ],
             ),
             SizedBox(
@@ -70,7 +75,10 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   'Favorites',
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                TextButtonCustomise(text: 'All'),
+                TextButtonCustomise(
+                  text: 'All',
+                  onPressed: onPressed,
+                ),
               ],
             ),
             SizedBox(
@@ -106,7 +114,10 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
                   'Recent',
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                TextButtonCustomise(text: 'All'),
+                TextButtonCustomise(
+                  text: 'All',
+                  onPressed: onPressed,
+                ),
               ],
             ),
             SizedBox(
