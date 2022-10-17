@@ -14,29 +14,45 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _width = MediaQuery.of(context).size.width / 5;
-    _height = MediaQuery.of(context).size.height / 10;
+    _width = MediaQuery.of(context).size.width / 4.3;
+    _height = MediaQuery.of(context).size.height / 8;
 
-    return SingleChildScrollView(
-      child: Wrap(
-        spacing: 17.0,
-        runSpacing: 19.0,
-        children: <Widget>[
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-          PhotoView(width: _width, height: _height),
-        ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(6),
+          child: Wrap(
+            spacing: 5.0,
+            runSpacing: 5.0,
+            children: <Widget>[
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+              PhotoView(width: _width, height: _height),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'add photo',
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:photo_hooks/configuration/app_colors.dart';
 
 import 'package:photo_hooks/presentation/screens/albums_screen.dart';
+import 'package:photo_hooks/presentation/screens/for_you_screen.dart';
 import 'package:photo_hooks/presentation/screens/photo_gallery_screen.dart';
+import 'package:photo_hooks/presentation/screens/search_screen.dart';
 import 'package:photo_hooks/model/picture.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -17,7 +19,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,21 +28,24 @@ class MyApp extends StatelessWidget {
         primaryColor: AppColors.appBarColor,
         scaffoldBackgroundColor: AppColors.backgroundColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        textTheme: TextTheme(
-          bodyText1: TextStyle(
+        textTheme: const TextTheme(
+          headline1: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
             color: Colors.black,
-            fontSize: 15,
-
-            /// find best size for text !
+          ),
+          bodyText1: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
           ),
           bodyText2: TextStyle(
-            color: Colors.black,
             fontSize: 20,
-
-            /// find best size for text !
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(color: AppColors.secondaryColor),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: AppColors.primaryColor),
@@ -88,13 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static const _widgetOptions = <Widget>[
     PhotoGalleryScreen(),
-    Text(
-      'Index 1: For You', // change to new screen photo for you
-    ),
+    ForYouScreen(),
     AlbumsScreen(),
-    Text(
-      'Index 3: Search',
-    ),
+    SearchScreen(),
   ];
 
   Future<void> _showChoiceDialog(BuildContext context) {
@@ -187,16 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _showChoiceDialog(context);
-        },
-        tooltip: 'add photo',
-        child: const Icon(Icons.add),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
