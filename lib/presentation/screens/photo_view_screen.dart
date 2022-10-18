@@ -1,8 +1,11 @@
 import 'dart:ui';
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 class PhotoViewScreen extends StatefulWidget {
-  const PhotoViewScreen({Key? key}) : super(key: key);
+  File? image;
+
+  PhotoViewScreen({this.image, Key? key}) : super(key: key);
 
   @override
   State<PhotoViewScreen> createState() => _PhotoViewScreenState();
@@ -45,15 +48,15 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                     child: Container(
                       width: 400.0,
                       height: 550.0,
+                      child: widget.image != null
+                          ? Image.file(
+                              widget.image!,
+                              fit: BoxFit.cover,
+                            )
+                          : FlutterLogo(size: 50),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      image: const DecorationImage(
-                        image: NetworkImage(
-                          'https://pics.filmaffinity.com/Mulan-807158695-large.jpg',
-                        ),
-                        fit: BoxFit.cover,
-                      ),
                       boxShadow: const [
                         BoxShadow(
                           color: Colors.black,

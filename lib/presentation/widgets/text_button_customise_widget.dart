@@ -16,7 +16,7 @@ class TextButtonCustomise extends StatelessWidget {
       style: TextButton.styleFrom(
         textStyle: Theme.of(context).textTheme.bodyText1,
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         text,
         style: Theme.of(context).textTheme.bodyText1,

@@ -1,19 +1,17 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:photo_hooks/configuration/app_colors.dart';
-
 import 'package:photo_hooks/presentation/screens/photo_view_screen.dart';
 
 class PhotoView extends StatefulWidget {
   final double height;
   final double width;
-  File? image;
+  final File image;
 
-  PhotoView({
+  const PhotoView({
     Key? key,
     required this.width,
     required this.height,
-    this.image,
+    required this.image,
   }) : super(key: key);
 
   @override
@@ -29,7 +27,7 @@ class _PhotoViewState extends State<PhotoView> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const PhotoViewScreen()),
+              MaterialPageRoute(builder: (context) => PhotoViewScreen()),
             );
           },
           child: Container(
@@ -37,14 +35,12 @@ class _PhotoViewState extends State<PhotoView> {
             width: widget.width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              color: AppColors.appBarColor,
+              color: Colors.lightBlueAccent,
             ),
-            child: widget.image != null
-                ? Image.file(
-                    widget.image!,
-                    fit: BoxFit.cover,
-                  )
-                : FlutterLogo(size: 50),
+            child: Image.file(
+              widget.image,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
       ],

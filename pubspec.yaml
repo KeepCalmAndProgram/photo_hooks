@@ -42,6 +42,9 @@ dependencies:
   hive_flutter: ^1.1.0
   uuid: 3.0.6
   freezed_annotation: ^2.1.0
+  flutter_bloc: ^8.1.1
+  image_picker: ^0.8.6
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:
