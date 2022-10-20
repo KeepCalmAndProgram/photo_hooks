@@ -9,10 +9,10 @@ abstract class PhotoState extends Equatable {
 
 class PhotoInitial extends PhotoState {}
 
-class PhotoLoaded extends PhotoState {
+class PhotosLoaded extends PhotoState {
   final List<PhotoModel> photos;
 
-  const PhotoLoaded({required this.photos});
+  const PhotosLoaded({required this.photos});
 
   @override
   List<Object> get props => [photos];

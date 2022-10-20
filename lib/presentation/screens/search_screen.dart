@@ -25,7 +25,7 @@ class _SearchScreenState extends State<SearchScreen> {
           if (state is PhotoInitial) {
             return const CircularProgressIndicator(color: Colors.orange);
           }
-          if (state is PhotoLoaded) {
+          if (state is PhotosLoaded) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

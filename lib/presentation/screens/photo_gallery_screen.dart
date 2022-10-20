@@ -29,7 +29,7 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
               if (state is PhotoInitial) {
                 return const CircularProgressIndicator(color: Colors.orange);
               }
-              if (state is PhotoLoaded) {
+              if (state is PhotosLoaded) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -69,7 +69,7 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
-        onPressed: () => context.read<PhotoBloc>().pickImage(),
+        onPressed: context.read<PhotoBloc>().pickImage,
         child: const Icon(Icons.add_a_photo_outlined),
       ),
     );

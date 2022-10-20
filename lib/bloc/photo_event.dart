@@ -9,6 +9,11 @@ abstract class PhotoEvent extends Equatable {
 
 class LoadPhotoCounter extends PhotoEvent {}
 
+class RegisterEvent extends PhotoEvent {
+  @override
+  List<Object> get props => [];
+}
+
 class AddPhoto extends PhotoEvent {
   final PhotoModel photo;
 

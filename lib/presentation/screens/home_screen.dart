@@ -5,7 +5,6 @@ import 'package:photo_hooks/presentation/screens/albums_screen.dart';
 import 'package:photo_hooks/presentation/screens/for_you_screen.dart';
 import 'package:photo_hooks/presentation/screens/photo_gallery_screen.dart';
 import 'package:photo_hooks/presentation/screens/search_screen.dart';
-import 'package:photo_hooks/model/picture.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key, required this.title}) : super(key: key);
@@ -23,13 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late Future<File> pictureFile;
   late Image picture;
-  late List<Picture> pictures;
-
-  @override
-  void initState() {
-    super.initState();
-    pictures = [];
-  }
 
   void _onItemTapped(int index) {
     setState(() {

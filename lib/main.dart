@@ -1,14 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:photo_hooks/configuration/app_colors.dart';
+import 'package:photo_hooks/database/photo_service.dart';
+import 'package:photo_hooks/model/photo_model.dart';
 
 import 'package:photo_hooks/presentation/screens/home_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_hooks/bloc/photo_bloc.dart';
 
 void main() async {
-  //await Hive.initFlutter();
-  //Hive.registerAdapter(PictureAdapter());
-  //await Hive.openBox('todos');
+  WidgetsFlutterBinding.ensureInitialized();
+  final appDirectory = await getApplicationDocumentsDirectory();
+  await Hive.initFlutter(appDirectory.path);
   runApp(const MyApp());
 }
 
@@ -17,47 +23,54 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiRepositoryProvider(
       providers: [
-        BlocProvider(
-          create: (context) => PhotoBloc()..add(LoadPhotoCounter()),
-        ),
+        RepositoryProvider(create: (context) => PhotoService()),
       ],
-      child: MaterialApp(
-        title: 'Photos',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: AppColors.appBarColor,
-          scaffoldBackgroundColor: AppColors.backgroundColor,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          textTheme: const TextTheme(
-            headline1: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) =>
+                PhotoBloc(RepositoryProvider.of<PhotoService>(context))
+                  ..add(RegisterEvent()),
+          ),
+        ],
+        child: MaterialApp(
+          title: 'Photos',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: AppColors.appBarColor,
+            scaffoldBackgroundColor: AppColors.backgroundColor,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            textTheme: const TextTheme(
+              headline1: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              bodyText1: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              bodyText2: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
-            bodyText1: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-            bodyText2: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+            inputDecorationTheme: const InputDecorationTheme(
+              hintStyle: TextStyle(color: AppColors.secondaryColor),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: AppColors.primaryColor),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: AppColors.secondaryColor),
+              ),
             ),
           ),
-          inputDecorationTheme: const InputDecorationTheme(
-            hintStyle: TextStyle(color: AppColors.secondaryColor),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.primaryColor),
-            ),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.secondaryColor),
-            ),
-          ),
+          home: const HomeScreen(title: 'Gallery'),
         ),
-        home: const HomeScreen(title: 'Gallery'),
       ),
     );
   }
