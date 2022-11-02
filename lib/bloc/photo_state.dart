@@ -10,7 +10,7 @@ abstract class PhotoState extends Equatable {
 class PhotoInitial extends PhotoState {}
 
 class PhotosLoaded extends PhotoState {
-  final List<PhotoModel> photos;
+  final List<PhotoPresentationModel> photos;
 
   const PhotosLoaded({required this.photos});
 

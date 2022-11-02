@@ -1,32 +1,37 @@
 import 'dart:io';
 
-import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart';
-
+import 'package:photo_hooks/bloc/photo_presentation_model.dart';
 import 'package:photo_hooks/model/photo_model.dart';
 
-// TODO: WORK IN PROGRESS;
 class PhotoService {
   late Box<PhotoModel> _photos;
 
   Future<void> init() async {
-    Hive.registerAdapter(PhotoModelAdapter());
     _photos = await Hive.openBox<PhotoModel>('photos');
   }
 
-  List<PhotoModel> getPhotos() {
-    return _photos.values.toList();
+  List<PhotoPresentationModel> getPhotos() {
+    return _photos.values
+        .map((photoDao) => PhotoPresentationModel(
+              id: photoDao.id,
+              name: photoDao.name,
+              image: File(photoDao.imagePath),
+            ))
+        .toList();
   }
 
-  void addPhoto(PhotoModel photo) {
-    _photos.add(photo);
+  Future<void> addPhoto(PhotoPresentationModel photo) async {
+    _photos.add(PhotoModel(
+      id: photo.id,
+      name: photo.name,
+      imagePath: photo.image.path,
+    ));
   }
 
   Future<void> removePhoto(File image, String id) async {
-    final photoToRemove =
-        _photos.values.firstWhere((element) => element.id == id);
+    final photoToRemove = _photos.values.firstWhere((element) => element.id == id);
     _photos.delete(photoToRemove);
   }
 }

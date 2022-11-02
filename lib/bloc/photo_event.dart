@@ -15,7 +15,7 @@ class RegisterEvent extends PhotoEvent {
 }
 
 class AddPhoto extends PhotoEvent {
-  final PhotoModel photo;
+  final PhotoPresentationModel photo;
 
   const AddPhoto(this.photo);
 
@@ -24,7 +24,7 @@ class AddPhoto extends PhotoEvent {
 }
 
 class RemovePhoto extends PhotoEvent {
-  final PhotoModel photo;
+  final PhotoPresentationModel photo;
 
   const RemovePhoto(this.photo);
 

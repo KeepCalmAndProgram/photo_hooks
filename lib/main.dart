@@ -1,20 +1,19 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:photo_hooks/bloc/photo_bloc.dart';
 import 'package:photo_hooks/configuration/app_colors.dart';
 import 'package:photo_hooks/database/photo_service.dart';
 import 'package:photo_hooks/model/photo_model.dart';
-
 import 'package:photo_hooks/presentation/screens/home_screen.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:photo_hooks/bloc/photo_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final appDirectory = await getApplicationDocumentsDirectory();
-  await Hive.initFlutter(appDirectory.path);
+  final dir = await getApplicationDocumentsDirectory();
+  Hive
+    ..init(dir.path)
+    ..registerAdapter(PhotoModelAdapter());
   runApp(const MyApp());
 }
 
@@ -30,9 +29,7 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) =>
-                PhotoBloc(RepositoryProvider.of<PhotoService>(context))
-                  ..add(RegisterEvent()),
+            create: (context) => PhotoBloc(RepositoryProvider.of<PhotoService>(context))..add(RegisterEvent()),
           ),
         ],
         child: MaterialApp(
