@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class IconTextButton extends StatelessWidget {
@@ -7,11 +5,14 @@ class IconTextButton extends StatelessWidget {
   final String textRightSide;
   final IconData icon;
 
+  final VoidCallback onPressed;
+
   const IconTextButton({
     Key? key,
     required this.textLeftSide,
     required this.textRightSide,
     required this.icon,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -20,7 +21,7 @@ class IconTextButton extends StatelessWidget {
       style: TextButton.styleFrom(
         textStyle: Theme.of(context).textTheme.bodyText1,
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
