@@ -31,3 +31,12 @@ class RemovePhoto extends PhotoEvent {
   @override
   List<Object> get props => [photo];
 }
+
+class SelectPhoto extends PhotoEvent {
+  final PhotoPresentationModel photo;
+
+  const SelectPhoto(this.photo);
+
+  @override
+  List<Object> get props => [photo];
+}

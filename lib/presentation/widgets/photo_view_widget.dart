@@ -2,43 +2,47 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:photo_hooks/presentation/screens/photo_view_screen.dart';
 
-class PhotoView extends StatefulWidget {
+class PhotoView extends StatelessWidget {
   final double height;
   final double width;
   final File image;
+  final VoidCallback? onRemoveCallback;
 
   const PhotoView({
     Key? key,
     required this.width,
     required this.height,
     required this.image,
+    this.onRemoveCallback,
   }) : super(key: key);
 
-  @override
-  State<PhotoView> createState() => _PhotoViewState();
-}
-
-class _PhotoViewState extends State<PhotoView> {
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         GestureDetector(
-          onTap: () {
-            Navigator.push(
+          onTap: () async {
+            final isRemoved = await Navigator.push<bool>(
               context,
-              MaterialPageRoute(builder: (context) => PhotoViewScreen()),
+              MaterialPageRoute(
+                builder: (context) => PhotoViewScreen(
+                  image: image,
+                ),
+              ),
             );
+            if (isRemoved == true) {
+              onRemoveCallback?.call();
+            }
           },
           child: Container(
-            height: widget.height,
-            width: widget.width,
+            height: height,
+            width: width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
               color: Colors.lightBlueAccent,
             ),
             child: Image.file(
-              widget.image,
+              image,
               fit: BoxFit.cover,
             ),
           ),

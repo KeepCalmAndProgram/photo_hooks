@@ -37,6 +37,7 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
                       '${state.photos.length}',
                       style: const TextStyle(
                         fontSize: 50,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -49,11 +50,17 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
                         runSpacing: 5.0,
                         children: [
                           ...state.photos
-                              .map((photo) => PhotoView(
+                              .map(
+                                (photo) => PhotoView(
                                     width: _width,
                                     height: _height,
                                     image: photo.image,
-                                  ))
+                                    onRemoveCallback: () {
+                                      context
+                                          .read<PhotoBloc>()
+                                          .add(RemovePhoto(photo));
+                                    }),
+                              )
                               .toList(),
                         ],
                       ),

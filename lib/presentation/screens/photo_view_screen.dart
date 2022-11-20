@@ -2,18 +2,46 @@ import 'dart:ui';
 import 'dart:io';
 import 'package:flutter/material.dart';
 
-class PhotoViewScreen extends StatefulWidget {
-  File? image;
+class PhotoViewScreen extends StatelessWidget {
+  final File image;
+  PhotoViewScreen({
+    Key? key,
+    required this.image,
+  }) : super(key: key);
 
-  PhotoViewScreen({this.image, Key? key}) : super(key: key);
+  final _width = 400;
+  final _height = 500;
 
-  @override
-  State<PhotoViewScreen> createState() => _PhotoViewScreenState();
-}
-
-class _PhotoViewScreenState extends State<PhotoViewScreen> {
   @override
   Widget build(BuildContext context) {
+    /*return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(6),
+        child: BlocBuilder<PhotoBloc, PhotoState>(
+          builder: (context, state) {
+            if (state is PhotoInitial) {
+              return const CircularProgressIndicator(color: Colors.orange);
+            }
+            if (state is PhotosLoaded) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ...state.photos
+                      .map((photo) => PhotoView(
+                            width: _width,
+                            height: _height,
+                            image: photo.image,
+                          ))
+                      .toList(),
+                ],
+              );
+            } else {
+              return const Text('Something went wrong!');
+            }
+          },
+        ),
+      ),
+    );*/
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -23,8 +51,8 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.network(
-            'https://pics.filmaffinity.com/Mulan-807158695-large.jpg',
+          Image.file(
+            image,
             fit: BoxFit.cover,
           ),
           BackdropFilter(
@@ -32,7 +60,7 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
               sigmaX: 3.0,
               sigmaY: 3.0,
             ),
-            child: new Container(
+            child: Container(
               color: Colors.black.withOpacity(0.2),
             ),
           ),
@@ -44,17 +72,13 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    //alignment: Alignment.center,
                     child: Container(
-                      width: 400.0,
-                      height: 550.0,
-                      child: widget.image != null
-                          ? Image.file(
-                              widget.image!,
-                              fit: BoxFit.cover,
-                            )
-                          : FlutterLogo(size: 50),
-                    ),
+                        width: 400.0,
+                        height: 550.0,
+                        child: Image.file(
+                          image,
+                          //fit: BoxFit.cover,
+                        )),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       boxShadow: const [
@@ -117,7 +141,14 @@ class _PhotoViewScreenState extends State<PhotoViewScreen> {
                         child: IconButton(
                           icon: const Icon(Icons.delete_outline),
                           color: Colors.white,
-                          onPressed: () {},
+                          onPressed: () async {
+                            try {
+                              await image.delete();
+                              Navigator.of(context).pop(true);
+                            } catch (exception) {
+                              Navigator.of(context).pop(false);
+                            }
+                          },
                         ),
                       ),
                     ],
