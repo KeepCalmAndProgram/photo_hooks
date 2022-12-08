@@ -1,16 +1,22 @@
-# photo_hooks
+# Mobile Photo Gallery Application
 
-A new Flutter project.
+Mobile Photo Gallery
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
+This project is the implementation of the idea of creating a photo gallery that, with its functionality, resembles a gallery implemented on the IOS platform (its simple version)
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies
+- Attempt for writing **clean and maintainable code** with encapsulation (getters\setters), polymorphism (extending and 
+implementing parent classes), using all best practices for Dart code
+- Reactive approach with **BLoC pattern**
+- Using local database **Hive**
+- Attempt to implement the **MWWM architecture**
+- Navigation between pages using **Navigator** and **BottomNavigationBar**
+- Own custom services using asynchronously mechanics - **Future, async/await**
+- **Declarative approach** at creating own custom widgets
+- Separation between business logic and presentation
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Developer
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Andrzej Wisznicki
