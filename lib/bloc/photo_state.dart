@@ -17,12 +17,3 @@ class PhotosLoaded extends PhotoState {
   @override
   List<Object> get props => [photos];
 }
-
-/*class PhotoSelected extends PhotoState {
-  final List<PhotoPresentationModel> photos;
-
-  const PhotoSelected({required this.photos});
-
-  @override
-  List<Object> get props => [photos];
-}*/

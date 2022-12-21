@@ -29,7 +29,9 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => PhotoBloc(RepositoryProvider.of<PhotoService>(context))..add(RegisterEvent()),
+            create: (context) =>
+                PhotoBloc(RepositoryProvider.of<PhotoService>(context))
+                  ..add(RegisterEvent()),
           ),
         ],
         child: MaterialApp(

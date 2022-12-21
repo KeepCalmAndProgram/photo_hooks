@@ -50,7 +50,8 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
     on<RemovePhoto>((event, emit) async {
       if (state is PhotosLoaded) {
         final state = this.state as PhotosLoaded;
-        await _photoService.removePhoto(event.photo.image, event.photo.id);
+        await _photoService
+            .removePhoto(event.photo.id); //(event.photo.image, event.photo.id);
         emit(
           PhotosLoaded(
             photos: List.from(state.photos)..remove(event.photo),
@@ -72,17 +73,6 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       );
       _photoService.addPhoto(photo);
       add(AddPhoto(photo));
-    } on PlatformException catch (e) {
-      if (kDebugMode) {
-        print('Failed: $e');
-      }
-    }
-  }
-
-  Future<void> selectImage() async {
-    try {
-      //final image = await
-      // ne znaju kakie ja poluchaju dannyje kogda nazymaju na foto.
     } on PlatformException catch (e) {
       if (kDebugMode) {
         print('Failed: $e');
