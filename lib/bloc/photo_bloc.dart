@@ -35,9 +35,23 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
         );
       }
     });
-    on<RemovePhoto>((event, emit) {
+    on<SelectPhoto>((event, emit) {
       if (state is PhotosLoaded) {
         final state = this.state as PhotosLoaded;
+        emit(
+          PhotosLoaded(
+            photos: List.from(state.photos)
+              ..elementAt(int.parse(event.photo.id)),
+          ),
+        );
+        print('index: ' + event.photo.id);
+      }
+    });
+    on<RemovePhoto>((event, emit) async {
+      if (state is PhotosLoaded) {
+        final state = this.state as PhotosLoaded;
+        await _photoService
+            .removePhoto(event.photo.id); //(event.photo.image, event.photo.id);
         emit(
           PhotosLoaded(
             photos: List.from(state.photos)..remove(event.photo),

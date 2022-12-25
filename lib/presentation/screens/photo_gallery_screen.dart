@@ -33,14 +33,6 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${state.photos.length}',
-                      style: const TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 1.5,
                       width: MediaQuery.of(context).size.width,
@@ -49,13 +41,26 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
                         runSpacing: 5.0,
                         children: [
                           ...state.photos
-                              .map((photo) => PhotoView(
+                              .map(
+                                (photo) => PhotoView(
                                     width: _width,
                                     height: _height,
                                     image: photo.image,
-                                  ))
+                                    onRemoveCallback: () {
+                                      context
+                                          .read<PhotoBloc>()
+                                          .add(RemovePhoto(photo));
+                                    }),
+                              )
                               .toList(),
                         ],
+                      ),
+                    ),
+                    Text(
+                      '${state.photos.length} photos',
+                      style: const TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
                       ),
                     ),
                   ],

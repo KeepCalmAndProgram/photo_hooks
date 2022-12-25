@@ -30,8 +30,9 @@ class PhotoService {
     ));
   }
 
-  Future<void> removePhoto(File image, String id) async {
-    final photoToRemove = _photos.values.firstWhere((element) => element.id == id);
-    _photos.delete(photoToRemove);
+  Future<void> removePhoto(String id) async {
+    final photoToRemove =
+        _photos.values.firstWhere((element) => element.id == id);
+    photoToRemove.delete();
   }
 }
